@@ -9,8 +9,80 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WizardRouteImport } from './routes/wizard'
+import { Route as StaffingRouteImport } from './routes/staffing'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ScenariosRouteImport } from './routes/scenarios'
+import { Route as RtaRouteImport } from './routes/rta'
+import { Route as RotationsRouteImport } from './routes/rotations'
+import { Route as RosterRouteImport } from './routes/roster'
+import { Route as GapsRouteImport } from './routes/gaps'
+import { Route as ForecastRouteImport } from './routes/forecast'
+import { Route as ExportsRouteImport } from './routes/exports'
+import { Route as CapacityRouteImport } from './routes/capacity'
+import { Route as BacklogRouteImport } from './routes/backlog'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WizardRoute = WizardRouteImport.update({
+  id: '/wizard',
+  path: '/wizard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffingRoute = StaffingRouteImport.update({
+  id: '/staffing',
+  path: '/staffing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScenariosRoute = ScenariosRouteImport.update({
+  id: '/scenarios',
+  path: '/scenarios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RtaRoute = RtaRouteImport.update({
+  id: '/rta',
+  path: '/rta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RotationsRoute = RotationsRouteImport.update({
+  id: '/rotations',
+  path: '/rotations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RosterRoute = RosterRouteImport.update({
+  id: '/roster',
+  path: '/roster',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GapsRoute = GapsRouteImport.update({
+  id: '/gaps',
+  path: '/gaps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForecastRoute = ForecastRouteImport.update({
+  id: '/forecast',
+  path: '/forecast',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExportsRoute = ExportsRouteImport.update({
+  id: '/exports',
+  path: '/exports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CapacityRoute = CapacityRouteImport.update({
+  id: '/capacity',
+  path: '/capacity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BacklogRoute = BacklogRouteImport.update({
+  id: '/backlog',
+  path: '/backlog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +91,200 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/backlog': typeof BacklogRoute
+  '/capacity': typeof CapacityRoute
+  '/exports': typeof ExportsRoute
+  '/forecast': typeof ForecastRoute
+  '/gaps': typeof GapsRoute
+  '/roster': typeof RosterRoute
+  '/rotations': typeof RotationsRoute
+  '/rta': typeof RtaRoute
+  '/scenarios': typeof ScenariosRoute
+  '/settings': typeof SettingsRoute
+  '/staffing': typeof StaffingRoute
+  '/wizard': typeof WizardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/backlog': typeof BacklogRoute
+  '/capacity': typeof CapacityRoute
+  '/exports': typeof ExportsRoute
+  '/forecast': typeof ForecastRoute
+  '/gaps': typeof GapsRoute
+  '/roster': typeof RosterRoute
+  '/rotations': typeof RotationsRoute
+  '/rta': typeof RtaRoute
+  '/scenarios': typeof ScenariosRoute
+  '/settings': typeof SettingsRoute
+  '/staffing': typeof StaffingRoute
+  '/wizard': typeof WizardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/backlog': typeof BacklogRoute
+  '/capacity': typeof CapacityRoute
+  '/exports': typeof ExportsRoute
+  '/forecast': typeof ForecastRoute
+  '/gaps': typeof GapsRoute
+  '/roster': typeof RosterRoute
+  '/rotations': typeof RotationsRoute
+  '/rta': typeof RtaRoute
+  '/scenarios': typeof ScenariosRoute
+  '/settings': typeof SettingsRoute
+  '/staffing': typeof StaffingRoute
+  '/wizard': typeof WizardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/backlog'
+    | '/capacity'
+    | '/exports'
+    | '/forecast'
+    | '/gaps'
+    | '/roster'
+    | '/rotations'
+    | '/rta'
+    | '/scenarios'
+    | '/settings'
+    | '/staffing'
+    | '/wizard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/backlog'
+    | '/capacity'
+    | '/exports'
+    | '/forecast'
+    | '/gaps'
+    | '/roster'
+    | '/rotations'
+    | '/rta'
+    | '/scenarios'
+    | '/settings'
+    | '/staffing'
+    | '/wizard'
+  id:
+    | '__root__'
+    | '/'
+    | '/backlog'
+    | '/capacity'
+    | '/exports'
+    | '/forecast'
+    | '/gaps'
+    | '/roster'
+    | '/rotations'
+    | '/rta'
+    | '/scenarios'
+    | '/settings'
+    | '/staffing'
+    | '/wizard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BacklogRoute: typeof BacklogRoute
+  CapacityRoute: typeof CapacityRoute
+  ExportsRoute: typeof ExportsRoute
+  ForecastRoute: typeof ForecastRoute
+  GapsRoute: typeof GapsRoute
+  RosterRoute: typeof RosterRoute
+  RotationsRoute: typeof RotationsRoute
+  RtaRoute: typeof RtaRoute
+  ScenariosRoute: typeof ScenariosRoute
+  SettingsRoute: typeof SettingsRoute
+  StaffingRoute: typeof StaffingRoute
+  WizardRoute: typeof WizardRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wizard': {
+      id: '/wizard'
+      path: '/wizard'
+      fullPath: '/wizard'
+      preLoaderRoute: typeof WizardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staffing': {
+      id: '/staffing'
+      path: '/staffing'
+      fullPath: '/staffing'
+      preLoaderRoute: typeof StaffingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scenarios': {
+      id: '/scenarios'
+      path: '/scenarios'
+      fullPath: '/scenarios'
+      preLoaderRoute: typeof ScenariosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rta': {
+      id: '/rta'
+      path: '/rta'
+      fullPath: '/rta'
+      preLoaderRoute: typeof RtaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rotations': {
+      id: '/rotations'
+      path: '/rotations'
+      fullPath: '/rotations'
+      preLoaderRoute: typeof RotationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roster': {
+      id: '/roster'
+      path: '/roster'
+      fullPath: '/roster'
+      preLoaderRoute: typeof RosterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gaps': {
+      id: '/gaps'
+      path: '/gaps'
+      fullPath: '/gaps'
+      preLoaderRoute: typeof GapsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forecast': {
+      id: '/forecast'
+      path: '/forecast'
+      fullPath: '/forecast'
+      preLoaderRoute: typeof ForecastRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exports': {
+      id: '/exports'
+      path: '/exports'
+      fullPath: '/exports'
+      preLoaderRoute: typeof ExportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/capacity': {
+      id: '/capacity'
+      path: '/capacity'
+      fullPath: '/capacity'
+      preLoaderRoute: typeof CapacityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/backlog': {
+      id: '/backlog'
+      path: '/backlog'
+      fullPath: '/backlog'
+      preLoaderRoute: typeof BacklogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +297,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BacklogRoute: BacklogRoute,
+  CapacityRoute: CapacityRoute,
+  ExportsRoute: ExportsRoute,
+  ForecastRoute: ForecastRoute,
+  GapsRoute: GapsRoute,
+  RosterRoute: RosterRoute,
+  RotationsRoute: RotationsRoute,
+  RtaRoute: RtaRoute,
+  ScenariosRoute: ScenariosRoute,
+  SettingsRoute: SettingsRoute,
+  StaffingRoute: StaffingRoute,
+  WizardRoute: WizardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
