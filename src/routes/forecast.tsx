@@ -20,14 +20,16 @@ function ForecastPage() {
   }
 
   const filtered = queueId === "all" ? reqs : reqs.filter((r) => r.queueId === queueId);
-  const byInterval = aggregate(filtered, (r) => `${r.date} ${r.intervalStart}`, (acc, r) => ({
+  type IntervalRow = { label: string; volume: number; workload: number; required: number };
+  const byInterval = aggregate<typeof filtered[number], IntervalRow>(filtered, (r) => `${r.date} ${r.intervalStart}`, (acc, r) => ({
     label: `${r.date.slice(5)} ${r.intervalStart}`,
     volume: (acc?.volume ?? 0) + r.volume,
     workload: (acc?.workload ?? 0) + r.workloadMinutes,
     required: (acc?.required ?? 0) + r.requiredAgents,
   })).slice(0, 168);
 
-  const byChannel = aggregate(filtered, (r) => r.channel, (acc, r) => ({
+  type ChannelRow = { label: string; volume: number };
+  const byChannel = aggregate<typeof filtered[number], ChannelRow>(filtered, (r) => r.channel, (acc, r) => ({
     label: r.channel,
     volume: (acc?.volume ?? 0) + r.volume,
   }));

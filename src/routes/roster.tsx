@@ -16,6 +16,11 @@ function RosterPage() {
   const [view, setView] = useState<"daily" | "weekly">("weekly");
   const [day, setDay] = useState<string>(new Date().toISOString().slice(0, 10));
 
+  const dates = useMemo(() => {
+    const set = new Set(state.rosters.map((r) => r.date));
+    return Array.from(set).sort();
+  }, [state.rosters]);
+
   if (state.agents.length === 0 || state.shiftRules.length === 0) {
     return <AppShell><PageHeader title="Roster"/><EmptyState title="Need agents and shift rules" description="Complete steps 6 & 7 in the wizard first." ctaTo="/wizard"/></AppShell>;
   }
@@ -28,11 +33,6 @@ function RosterPage() {
   const toggleLock = (id: string) => {
     state.set("rosters", state.rosters.map((r) => r.id === id ? { ...r, locked: !r.locked } : r));
   };
-
-  const dates = useMemo(() => {
-    const set = new Set(state.rosters.map((r) => r.date));
-    return Array.from(set).sort();
-  }, [state.rosters]);
 
   const filtered = view === "daily" ? state.rosters.filter((r) => r.date === day) : state.rosters;
 
